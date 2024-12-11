@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block lab %}
+    Главная страница
+{% endblock %}
+
+{% block main %}
+    <h1>Список инициатив</h1>
+
+    <!-- Кнопки для авторизованных и неавторизованных пользователей -->
+    <div class="button-container">
+        {% if 'user_id' in session %}
+            <!-- Кнопка "Создать инициативу" для авторизованных пользователей -->
+            <a href="{{ url_for('create_initiative') }}" class="button">Создать инициативу</a>
+            <!-- Кнопка "Выйти" для авторизованных пользователей -->
+            <a href="{{ url_for('logout') }}" class="button">Выйти</a>
+        {% else %}
+            <!-- Кнопки "Войти" и "Зарегистрироваться" для неавторизованных пользователей -->
+            <a href="{{ url_for('login') }}" class="button">Войти</a>
+            <a href="{{ url_for('register') }}" class="button">Зарегистрироваться</a>
+        {% endif %}
+    </div>
+
+    <!-- Список инициатив в карточках -->
+    <div class="initiative-block">
+        {% for initiative in initiatives.items %}
+            <div class="initiative-item">
+                <h2>{{ initiative.title }}</h2>
+                <p>{{ initiative.content }}</p>
+                <p>Дата создания: {{ initiative.local_date_created }}</p>
+
+                <!-- Отображение оценки в правом нижнем углу -->
+                <span class="rating {% if initiative.current_rating > 0 %}positive{% elif initiative.current_rating < 0 %}negative{% else %}neutral{% endif %}">
+                    {{ initiative.current_rating }}
+                </span>
+
+                <!-- Кнопки "За", "Против" и "Удалить" -->
+                <div class="actions">
+                    {% if 'user_id' in session %}
+                        <a href="{{ url_for('vote', initiative_id=initiative.id, action='add', page=initiatives.page) }}">За</a>
+                        <a href="{{ url_for('vote', initiative_id=initiative.id, action='subtract', page=initiatives.page) }}">Против</a>
+                        {% if initiative.user_id == session['user_id'] or session['user_id'] == 1 %}
+                            <a href="{{ url_for('delete_initiative', initiative_id=initiative.id, page=initiatives.page) }}">Удалить</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <!-- Количество голосов -->
+                <span class="rating {% if initiative.current_rating > 0 %}positive{% elif initiative.current_rating < 0 %}negative{% else %}neutral{% endif %}">
+                    {{ initiative.current_rating }}
+                </span>
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Пагинация -->
+    <div class="pagination">
+        {% if initiatives.has_prev %}
+            <a href="{{ url_for('index', page=initiatives.prev_num) }}">Предыдущая</a>
+        {% endif %}
+        {% if initiatives.has_next %}
+            <a href="{{ url_for('index', page=initiatives.next_num) }}">Следующая</a>
+        {% endif %}
+    </div>
+{% endblock %}

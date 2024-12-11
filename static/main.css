@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #e0f7fa; /* Светло-голубой фон */
+}
+
+main {
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Стили для блоков инициатив */
+.initiative-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Отступ между карточками */
+    margin-bottom: 20px;
+}
+
+
+
+.initiative-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: calc(33.333% - 13.333px); /* Три карточки в ширину с учетом отступов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+.initiative-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: calc(50% - 10px); /* Две карточки в ширину с учетом отступов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+    position: relative; /* Для позиционирования кнопок и количества голосов */
+    padding-bottom: 60px; /* Добавляем отступ внизу для кнопок */
+}
+
+.initiative-item p {
+    margin-bottom: 10px;
+}
+
+.initiative-item .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.initiative-item .actions a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.initiative-item {
+    position: relative; /* Для корректного позиционирования элементов */
+    padding-bottom: 40px; /* Добавляем отступ внизу для кнопок */
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 10px; /* Отступ от нижнего края */
+    left: 10px; /* Отступ от левого края */
+    align-items: center; /* Выравнивание элементов по центру */
+}
+
+.rating {
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 10px; /* Отступ от нижнего края */
+    right: 10px; /* Отступ от правого края */
+    margin: 0; /* Убираем отступы */
+}
+
+/* Положительная оценка */
+.rating.positive {
+    background-color: #d4edda; /* Зеленый фон */
+    color: #155724; /* Темно-зеленый текст */
+}
+
+/* Отрицательная оценка */
+.rating.negative {
+    background-color: #f8d7da; /* Красный фон */
+    color: #721c24; /* Темно-красный текст */
+}
+
+/* Нулевая оценка */
+.rating.neutral {
+    background-color: #f1f1f1; /* Серый фон */
+    color: #333; /* Черный текст */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1; /* Серый фон для кнопок */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}

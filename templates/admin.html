@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block lab %}
+    Админ-панель
+{% endblock %}
+
+{% block main %}
+    <h1>Админ-панель</h1>
+    <h2>Пользователи</h2>
+    <ul>
+        {% for user in users %}
+            <li>
+                {{ user.username }}
+                <a href="{{ url_for('delete_user', user_id=user.id) }}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Инициативы</h2>
+    <ul>
+        {% for initiative in initiatives %}
+            <li>
+                {{ initiative.title }}
+                <!-- Кнопка "Удалить" для администратора -->
+                {% if session['user_id'] == 1 %}
+                    <a href="{{ url_for('delete_initiative', initiative_id=initiative.id) }}">Удалить</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
